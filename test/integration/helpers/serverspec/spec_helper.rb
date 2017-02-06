@@ -40,11 +40,14 @@ shared_examples 'bubble::deploy_cs1' do
     its(:stdout) {should contain('Installing and configuring')}
     its(:stdout) {should contain('Ready for duty!')}
   end
+end
 
+shared_examples 'bubble::check_cs1' do
   describe command('sshpass -p password ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=quiet -t root@cs1 "mount | grep data"') do
     its(:stdout) {should contain('192.168.22.1:/data')}
   end
 end
+
 
 shared_examples 'bubble::deploy_kvm1' do
   describe command('cd /data/shared/deploy; ./kvm_local_deploy.py --deploy-role  kvm --digit 1 --force') do
@@ -55,7 +58,9 @@ shared_examples 'bubble::deploy_kvm1' do
     its(:stdout) {should contain('Installing and configuring')}
     its(:stdout) {should contain('Ready for duty!')}
   end
+end
 
+shared_examples 'bubble::check_kvm1' do
   describe command('sshpass -p password ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=quiet -t root@kvm1 "mount | grep data"') do
     its(:stdout) {should contain('192.168.22.1:/data')}
   end
