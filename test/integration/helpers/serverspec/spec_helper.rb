@@ -20,9 +20,9 @@ shared_examples 'bubble::default_tests' do
     its(:stdout) { should match(/NAT\s+active/)}
   end
 
-  describe command('brctl show') do
+  describe command('/usr/sbin/brctl show') do
     its(:stdout) { should contain('tap_vpn')}
-    its(:stdout) { should contain('virbr0-nic')}
+    its(:stdout) { should contain('virbr0')}
   end
 
   describe file('/etc/resolv.conf') do
