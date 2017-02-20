@@ -34,7 +34,7 @@ end
 
 # Sync the MCT shared repository
 git '/data/shared' do
-  repository 'https://github.com/MissionCriticalCloud/bubble-toolkit.git'
+  repository 'https://github.com/karuturi/bubble-toolkit.git'
   revision 'master'
   group node['bubble']['group_name']
   action :sync
